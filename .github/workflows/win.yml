@@ -18,12 +18,13 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - uses: xmake-io/github-action-setup-xmake@v1
         with:
           xmake-version: latest
 
       - name: Build
+        run: |
           xmake f -vD -a ${{ matrix.arch }}
           xmake -a
           xmake -b unitest
